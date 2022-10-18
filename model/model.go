@@ -2,8 +2,8 @@ package model
 
 import (
 	"log"
-	"smart-server/model/mysql"
-	"smart-server/model/redis"
+	"web-server/model/mysql"
+	"web-server/model/redis"
 )
 
 // ModelRegister 数据层注册

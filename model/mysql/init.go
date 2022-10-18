@@ -2,7 +2,7 @@ package mysql
 
 import (
 	"fmt"
-	"smart-server/conf"
+
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
