@@ -6,8 +6,8 @@ import (
 	"web-server/model/redis"
 )
 
-// ModelRegister 数据层注册
-func ModelRegister() {
+// ModelInit 数据层注册
+func ModelInit() {
 	// 注册mysql
 	if err := mysql.InitDB(); err != nil {
 		log.Fatalf("Init Mysql Fail! err = %+v", err)

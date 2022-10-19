@@ -5,10 +5,11 @@ import (
 
 	"time"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"github.com/spf13/viper"
 )
 
+// DB 数据库实例
 var DB *gorm.DB
 
 // BaseColumn 基础字段
@@ -21,11 +22,13 @@ type BaseColumn struct {
 // InitDB 初始化mysql数据库
 func InitDB() error {
 	var err error
-	DB, err = gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
-		conf.MysqlConf.User,
-		conf.MysqlConf.Password,
-		conf.MysqlConf.Host,
-		conf.MysqlConf.Name))
+	DB, err = gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local",
+		viper.GetString("mysql.username"),
+		viper.GetString("mysql.password"),
+		viper.GetString("mysql.host"),
+		viper.GetString("mysql.port"),
+		viper.GetString("mysql.database"),
+		viper.GetString("mysql.charset")))
 
 	if err != nil {
 		return fmt.Errorf("models.Setup err: %v", err)

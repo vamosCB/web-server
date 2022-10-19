@@ -1,0 +1,17 @@
+server:
+  runMode: debug
+  host: 0.0.0.0
+  port: 8080
+  readTimeout: 60
+  WriteTimeout: 60
+
+# 日志配置
+log:
+  output: "file" # stdout or file
+  level: "debug" # panic、fatal、error、warn、info、debug、trace
+  format: "json" # json or text
+
+ssl:
+  enable: false # true or false
+  ssl_crt: ""
+  ssl_key: ""
