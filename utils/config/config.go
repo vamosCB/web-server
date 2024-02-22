@@ -11,7 +11,7 @@ import (
 func ConfigInit() {
 	configFile := []string{"app", "mysql", "redis"}
 	// 设置配置文件路径
-	viper.AddConfigPath("../../conf/")
+	viper.AddConfigPath("conf/")
 	// 设置配置文件格式为YAML
 	viper.SetConfigType("yaml")
 	for _, name := range configFile {

@@ -8,7 +8,9 @@ import (
 	"strings"
 )
 
-var root = `D:\迅雷下载\`
+var root = `E:\斯巴达克斯\第三季\`
+
+var trimStr = "[中英双字]"
 
 // 获取文件信息
 func getFileInfo(path string, fp os.FileInfo, err error) error {
@@ -20,16 +22,16 @@ func getFileInfo(path string, fp os.FileInfo, err error) error {
 	}
 	if fp.IsDir() {
 		fmt.Println(fp.Name() + "is Dir")
-		return nil
+		//return nil
 	}
-	if strings.Contains(fp.Name(), "阳光电影www.ygdy8.com.") {
+	if strings.Contains(fp.Name(), trimStr) {
 		fmt.Println(fp.Name())
 		fileName := fp.Name()
-		newName := strings.TrimLeft(fileName, "阳光电影www.ygdy8.com.")
+		newName := strings.Trim(fileName, trimStr)
 		fmt.Println(newName)
-		if err := os.Rename(root+fileName, root+newName); err != nil {
-			fmt.Printf("\n %c[1;40;32m%s%c[0m\n\n", 0x1B, err.Error(), 0x1B)
-		}
+		// if err := os.Rename(root+fileName, root+newName); err != nil {
+		// 	fmt.Printf("\n %c[1;40;32m%s%c[0m\n\n", 0x1B, err.Error(), 0x1B)
+		// }
 	}
 	return nil
 }

@@ -14,10 +14,10 @@ type Account struct {
 	NickName      string `json:"nick_name" comment:"用户昵称"`
 }
 
-// GetAccountInfoByID 通过ID获取帐号信息
-func GetAccountInfoByID(ctx context.Context, ID int) (*Account, error) {
+// GetAccountInfoByID 通过账号获取帐号信息
+func GetAccountInfoByID(ctx context.Context, accountNumber string) (*Account, error) {
 	var result Account
-	err := mysql.DB.First(&result, ID).Error
+	err := mysql.DB.First(&result, accountNumber).Error
 	if err != nil && err != gorm.ErrRecordNotFound {
 		return nil, err
 	}
